@@ -32,8 +32,12 @@ function getCurrentFunctionName() {
  *   getFunctionBody(hiHello) => "function hiHello() { console.log('hello world'); }"
  *
  */
-function getFunctionBody(/* func */) {
-  throw new Error('Not implemented');
+function getFunctionBody(func) {
+  const funcString = func.toString();
+
+  const body = funcString.match(/(?<=\{)([\s\S]*?)(?=\})/)[0].trim();
+
+  return body;
 }
 
 /**
@@ -50,8 +54,13 @@ function getFunctionBody(/* func */) {
  *  ]) => [0, 1, 2]
  *
  */
-function getArgumentsCount(/* funcs */) {
-  throw new Error('Not implemented');
+function getArgumentsCount(funcs) {
+  const argsArr = [];
+  funcs.forEach((item) => {
+    argsArr.push(item.length);
+  });
+
+  return argsArr;
 }
 
 /**
